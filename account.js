@@ -62,3 +62,36 @@ logoutBtn.addEventListener("click", () => {
 });
 
 render();
+(function usernameMVP(){
+    const input = document.getElementById("usernameInput");
+    const btn = document.getElementById("saveUsernameBtn");
+    const status = document.getElementById("usernameStatus");
+    if (!input || !btn) return;
+
+    const KEY = "pyr_username";
+
+    function norm(u){
+        return (u || "").trim().toLowerCase();
+    }
+
+    function valid(u){
+        return /^[a-z0-9_]{3,20}$/.test(u);
+    }
+
+    // load existing
+    const existing = localStorage.getItem(KEY);
+    if (existing) input.value = existing;
+
+    btn.addEventListener("click", () => {
+        const u = norm(input.value);
+
+        if (!valid(u)){
+            status.textContent = "Use 3–20 chars: letters, numbers, underscore.";
+            return;
+        }
+
+        localStorage.setItem(KEY, u);
+        status.textContent = `Saved as @${u}`;
+        setTimeout(() => { if (status.textContent === `Saved as @${u}`) status.textContent = ""; }, 1800);
+    });
+})();

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PYR Signup</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="page">
+
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="landing.html">PYR</a>
+            <nav class="nav-links">
+                <a href="landing.html#how">How it works</a>
+                <a href="landing.html#features">Features</a>
+                <a href="app.html">App</a>
+                <a href="community.html">Community</a>
+                <a class="btn small" href="login.html">Log in</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app">
+        <div class="app-inner">
+            <div class="panel">
+                <h1 class="app-title">Create account</h1>
+                <p class="muted">MVP signup using localStorage.</p>
+
+                <div class="form">
+                    <label>
+                        Username
+                        <input id="name" type="text" placeholder="PaperHandsPaul" autocomplete="name" />
+                    </label>
+
+                    <label>
+                        Email
+                        <input id="email" type="email" placeholder="you@email.com" autocomplete="email" />
+                    </label>
+
+                    <label>
+                        Password
+                        <input id="password" type="password" placeholder="••••••••" autocomplete="new-password" />
+                    </label>
+
+                    <button class="btn" id="signup">Create account</button>
+
+                    <p class="muted" style="margin-top:12px;">
+                        Already have an account?
+                        <a href="login.html" style="text-decoration:underline;">Log in</a>
+                    </p>
+
+                    <p id="msg" class="muted" style="margin-top:12px;"></p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="panel-title">Why PYR?</h2>
+
+                <div class="results">
+
+                    <p><strong>Most traders don’t lose because they’re wrong.</strong><br>
+                        They lose because they break discipline.</p>
+
+                    <ul>
+                        <li>They size too big</li>
+                        <li>They chase</li>
+                        <li>They trade emotions instead of rules</li>
+                    </ul>
+
+                    <p><strong>PYR exists to call that out.</strong></p>
+
+                    <p class="muted">
+                        Before the mistake.<br>
+                        Before the spiral.<br>
+                        Before the blow up.
+                    </p>
+
+                    <p><strong>You don’t get signals.</strong><br>
+                        You get guardrails.</p>
+
+                    <ul>
+                        <li>Clear limits</li>
+                        <li>Hard warnings</li>
+                        <li>Uncomfortable truth</li>
+                    </ul>
+
+                    <p>
+                        If you already know how to trade, PYR helps you
+                        <strong>stop being your own worst enemy</strong>.
+                    </p>
+
+                    <p class="muted">
+                        That’s the edge most people never build.
+                    </p>
+
+                    <p class="muted" style="margin-top:12px;">
+                        No payment. No spam. Just an MVP account.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="signup.js"></script>
+    <script src="global.js"></script>
+
+</div>
+</body>
+</html>

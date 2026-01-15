@@ -26,8 +26,26 @@ function getSession() {
 }
 
 function setSession(email) {
-    localStorage.setItem("pyr_session", JSON.stringify({ email, ts: Date.now() }));
+    // store session
+    localStorage.setItem(
+        "pyr_session",
+        JSON.stringify({ email, ts: Date.now() })
+    );
+
+    // auto-assign username if missing
+    if (!localStorage.getItem("pyr_username")) {
+        const base = email
+            .split("@")[0]
+            .replace(/[^a-z0-9]/gi, "")
+            .toLowerCase();
+
+        const rand = Math.floor(1000 + Math.random() * 9000);
+        const username = (base || "trader") + rand;
+
+        localStorage.setItem("pyr_username", username);
+    }
 }
+
 
 function clearSession() {
     localStorage.removeItem("pyr_session");

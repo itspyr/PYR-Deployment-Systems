@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PYR Community</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="community-page">
+<div class="page">
+
+
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="landing.html">PYR</a>
+            <nav class="nav-links">
+                <a href="landing.html#how">How it works</a>
+                <a href="landing.html#features">Features</a>
+                <a href="app.html">App</a>
+                <a href="account.html">Account</a>
+                <a class="btn small" href="community.html">Community</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app">
+        <div class="app-inner">
+
+            <!-- GATE -->
+            <div class="panel" id="communityGate">
+                <h1 class="app-title">Community</h1>
+                <p class="muted">You must be logged in to view community threads.</p>
+
+                <div class="results" style="margin-top:12px;">
+                    <p class="muted">Log in to your account, then come back here.</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                        <a class="btn" href="account.html">Go to Account</a>
+                        <a class="btn ghost" href="landing.html">Back to Landing</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP -->
+            <div class="panel" id="communityApp" style="display:none;">
+                <div class="community-shell">
+
+                    <div class="community-top">
+                        <div>
+                            <h2 class="panel-title" style="margin:0;">Community Setups</h2>
+                            <p class="muted" style="margin:8px 0 0;">
+                                Post your setup. Ask for critique. Keep it respectful. Not financial advice.
+                            </p>
+                            <p class="muted" style="margin:10px 0 0;" id="memberBadge">Logged in</p>
+                        </div>
+
+                        <div class="community-top-actions">
+                            <button class="btn" id="toggleCreatePostBtn">Create Post</button>
+                        </div>
+                    </div>
+
+                    <!-- Create Post (hidden by default) -->
+                    <div class="card community-create" id="createPostCard" style="display:none;">
+                        <div class="card-title" style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                            <span>Create a post</span>
+                            <button class="btn small ghost" id="closeCreatePostBtn">Close</button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form">
+                                <label>
+                                    Title
+                                    <input id="pTitle" type="text" placeholder="Example: NVDA breakout setup, stop and invalidation">
+                                </label>
+
+                                <div class="community-form-row">
+                                    <label>
+                                        Ticker (optional)
+                                        <input id="pTicker" type="text" placeholder="NVDA">
+                                    </label>
+
+                                    <label>
+                                        Thumbnail (optional)
+                                        <input id="pThumb" type="file" accept="image/*">
+                                    </label>
+                                </div>
+
+                                <label>
+                                    Setup details
+                                    <textarea id="pBody" rows="6" placeholder="Entry, stop, take profit, invalidation, why you like it, what you want feedback on."></textarea>
+                                </label>
+
+                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                    <button class="btn" id="createPostBtn">Post</button>
+                                    <button class="btn ghost" id="clearPostBtn">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feed first -->
+                    <div class="community-grid">
+                        <div class="card">
+                            <div class="card-title">Feed</div>
+                            <div class="card-body">
+                                <div class="community-filter">
+                                    <input id="postSearch" type="text" placeholder="Search title, ticker, text..." style="flex:1; min-width:220px;">
+                                    <select id="sortPosts" style="width:220px; max-width:100%;">
+                                        <option value="new">Newest</option>
+                                        <option value="top">Top (score)</option>
+                                    </select>
+                                </div>
+
+                                <div id="postList" class="community-feed"></div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-title">Post</div>
+                            <div class="card-body" id="postDetail">
+                                <div class="muted">Select a post from the feed.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="muted" style="margin-top:12px; font-size:13px;">
+                        Disclaimer: User-generated content. PYR does not verify accuracy and does not provide financial advice.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+                <!-- Feed + Detail -->
+                <div class="community-grid" style="margin-top:14px;">
+                    <!-- Feed -->
+                    <div class="card">
+                        <div class="card-title">Posts</div>
+                        <div class="card-body">
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                                <input id="postSearch" type="text" placeholder="Search title, ticker, text..." style="flex:1; min-width:220px;">
+                                <select id="sortPosts" style="width:220px; max-width:100%;">
+                                    <option value="new">Newest</option>
+                                    <option value="top">Top (score)</option>
+                                </select>
+                            </div>
+
+                            <div id="postList" class="community-feed"></div>
+                        </div>
+                    </div>
+
+                    <!-- Detail -->
+                    <div class="card">
+                        <div class="card-title">Post</div>
+                        <div class="card-body" id="postDetail">
+                            <div class="muted">Select a post from the left.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="muted" style="margin-top:12px; font-size:13px;">
+                    Disclaimer: User-generated content. PYR does not verify accuracy and does not provide financial advice.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="global.js"></script>
+    <script src="community.js"></script>
+</div>
+</body>
+</html>

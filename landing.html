@@ -7,22 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="page">
+
 <!-- STOCK TICKER -->
-<div style="position:sticky;top:0;z-index:10000;background:#0b0f14;">
+    <div class="tv-ticker">
+
+    <div style="position:sticky;top:0;z-index:10000;background:#0b0f14;">
     <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
-        <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-                async
-        >
+        <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
             {
                 "symbols": [
-                {"proName": "NASDAQ:AAPL", "title": "AAPL"},
-                {"proName": "NASDAQ:NVDA", "title": "NVDA"},
-                {"proName": "NASDAQ:TSLA", "title": "TSLA"},
-                {"proName": "NASDAQ:QQQ",  "title": "QQQ"},
-                {"proName": "AMEX:SPY",    "title": "SPY"}
+                {"proName":"AMEX:SPY","title":"SPY"},
+                {"proName":"NASDAQ:QQQ","title":"QQQ"},
+                {"proName":"AMEX:IWM","title":"IWM"},
+                {"proName":"AMEX:DIA","title":"DIA"},
+
+                {"proName":"NASDAQ:AAPL","title":"AAPL"},
+                {"proName":"NASDAQ:MSFT","title":"MSFT"},
+                {"proName":"NASDAQ:NVDA","title":"NVDA"},
+                {"proName":"NASDAQ:AMZN","title":"AMZN"},
+                {"proName":"NASDAQ:GOOGL","title":"GOOGL"},
+                {"proName":"NASDAQ:META","title":"META"},
+                {"proName":"NASDAQ:TSLA","title":"TSLA"},
+
+                {"proName":"CBOE:VIX","title":"VIX"},
+                {"proName":"TVC:US10Y","title":"US10Y"},
+
+                {"proName":"CRYPTO:BTCUSD","title":"BTC"},
+                {"proName":"CRYPTO:ETHUSD","title":"ETH"},
+
+                {"proName":"AMEX:USO","title":"OIL"},
+                {"proName":"AMEX:GLD","title":"GOLD"}
             ],
                 "showSymbolLogo": true,
                 "isTransparent": true,
@@ -31,6 +48,9 @@
                 "locale": "en"
             }
         </script>
+
+
+    </div>
     </div>
 </div>
 <!-- END STOCK TICKER -->
@@ -41,6 +61,7 @@
             <a href="#how">How it works</a>
             <a href="#features">Features</a>
             <a href="account.html">Account</a>
+            <a href="community.html">Community</a>
             <a class="btn small" href="app.html">Open App</a>
         </nav>
     </div>
@@ -157,5 +178,8 @@
 </main>
 
 <script src="script.js"></script>
+    <script src="global.js"></script>
+
+</div>
 </body>
 </html>
