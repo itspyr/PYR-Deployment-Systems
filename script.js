@@ -32,15 +32,61 @@ function runCheck() {
     }
 
     const html = `
-    <h3>Warnings</h3>
-    <ul>${warnings.length ? warnings.map(w => `<li>${w}</li>`).join("") : "<li>None</li>"}</ul>
+  <div class="out">
 
-    <h3>Suggestions</h3>
-    <ul>${suggestions.length ? suggestions.map(s => `<li>${s}</li>`).join("") : "<li>None</li>"}</ul>
+    ${warnings.length ? `
+      <div class="out-block danger">
+        <div class="out-top">
+          <span class="out-pill">Warning</span>
+        </div>
+        <div class="out-text">
+          ${warnings.map(w => `
+            <div class="out-line">
+              <strong>${w.split(".")[0]}.</strong>
+              ${w.split(".").slice(1).join(".").trim()}
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
 
-    <h3>Summary</h3>
-    <p><strong>Account:</strong> $${accountSize || "?"} | <strong>Experience:</strong> ${experience} | <strong>Risk:</strong> ${riskStyle} | <strong>Goal:</strong> ${goal}</p>
-  `;
+    ${suggestions.length ? `
+      <div class="out-block good">
+        <div class="out-top">
+          <span class="out-pill">Suggestion</span>
+        </div>
+        <div class="out-text">
+          ${suggestions.map(s => `
+            <div class="out-line">${s}</div>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
+
+    ${(!warnings.length && !suggestions.length) ? `
+      <div class="out-block neutral">
+        <div class="out-top">
+          <span class="out-pill">All clear</span>
+        </div>
+        <div class="out-text">
+          <div class="out-line">No warnings triggered for these inputs.</div>
+        </div>
+      </div>
+    ` : ""}
+
+    <div class="out-summary">
+      <span><strong>Account:</strong> $${accountSize || "?"}</span>
+      <span class="dot">•</span>
+      <span><strong>Experience:</strong> ${experience}</span>
+      <span class="dot">•</span>
+      <span><strong>Risk:</strong> ${riskStyle}</span>
+      <span class="dot">•</span>
+      <span><strong>Goal:</strong> ${goal}</span>
+    </div>
+
+  </div>
+`;
+
 
     resultsEl.innerHTML = html;
 }
@@ -360,4 +406,84 @@ if (runBtn && resultsEl && accountSizeEl && experienceEl && riskStyleEl && goalE
     }
     renderList();
 })();
+(function howScrollRail() {
+    const section = document.getElementById("how");
+    const panelsWrap = document.getElementById("howPanels");
+    if (!section || !panelsWrap) return;
 
+    const panels = Array.from(panelsWrap.querySelectorAll(".how-panel"));
+    const buttons = Array.from(document.querySelectorAll(".how-step"));
+    const bar = document.getElementById("howProgress");
+
+    if (!panels.length || !buttons.length) return;
+
+    let enabled = false;
+    let activeIndex = 0;
+
+    function applyUI(stepIndex) {
+        activeIndex = stepIndex;
+
+        buttons.forEach(b =>
+            b.classList.toggle("is-active", Number(b.dataset.step) === stepIndex)
+        );
+        panels.forEach(p =>
+            p.classList.toggle("is-active", Number(p.dataset.step) === stepIndex)
+        );
+
+        if (bar) bar.style.width = `${((stepIndex + 1) / panels.length) * 100}%`;
+    }
+
+    // click to jump
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const i = Number(btn.dataset.step);
+            const target = panels[i];
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    });
+
+    // enable only when section is meaningfully on screen
+    const sectionObserver = new IntersectionObserver(
+        ([entry]) => {
+            const nowEnabled = entry.isIntersecting && entry.intersectionRatio > 0.15;
+
+            // when we FIRST enable, force UI sync (this fixes "bar never updates")
+            if (!enabled && nowEnabled) {
+                applyUI(activeIndex); // forces bar + highlights even if still step 0
+            }
+
+            enabled = nowEnabled;
+        },
+        {
+            threshold: [0, 0.15, 0.25],
+            rootMargin: "-10% 0px -10% 0px"
+        }
+    );
+    sectionObserver.observe(section);
+
+    // lock harder: only switch when panel is in the center band
+    const panelObserver = new IntersectionObserver(
+        (entries) => {
+            if (!enabled) return;
+
+            const best = entries
+                .filter(e => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (!best) return;
+            if (best.intersectionRatio < 0.35) return;
+
+            const i = Number(best.target.dataset.step);
+            if (i !== activeIndex) applyUI(i);
+        },
+        {
+            rootMargin: "-35% 0px -35% 0px",
+            threshold: [0.25, 0.35, 0.5, 0.65]
+        }
+    );
+
+    panels.forEach(p => panelObserver.observe(p));
+
+    // initial paint (works even before scroll)
+    applyUI(0);
+})();

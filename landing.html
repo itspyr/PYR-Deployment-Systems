@@ -60,9 +60,15 @@
         <nav class="nav-links">
             <a href="#how">How it works</a>
             <a href="#features">Features</a>
-            <a href="account.html">Account</a>
             <a href="community.html">Community</a>
-            <a class="btn small" href="app.html">Open App</a>
+            <div class="nav-dd">
+                <button class="nav-dd-btn">Tools</button>
+                <div class="nav-dd-menu">
+                    <a href="app.html">Run a Check</a>
+                    <a href="challenge.html">Challenge My Trade</a>
+                </div>
+            </div>
+            <a class="btn small" href="account.html">Account</a>
         </nav>
     </div>
 </header>
@@ -72,9 +78,18 @@
         <div class="hero-inner">
             <div class="hero-left">
                 <p class="pill">Behavioral Capital Guidance</p>
-                <h1>Trade smarter by protecting your behavior, not just your picks.</h1>
+
+                <h1 class="hero-headline">
+                    Trade with <em>structure</em>,<br>
+                    not <em>impulse</em>.
+                </h1>
+
+                <p class="hero-tagline">
+                    <strong>P</strong>rioritize <strong>Y</strong>our <strong>R</strong>isk
+                </p>
+
                 <p class="sub">
-                    PYR helps you avoid the common blow-ups with simple inputs, clear warnings, and rules that keep you consistent.
+                    PYR helps you avoid common blow-ups with simple inputs, clear warnings, and rules that keep you consistent.
                 </p>
                 <div class="cta">
                     <a class="btn" href="app.html">Try the Check</a>
@@ -83,7 +98,7 @@
                 <div class="trust">
                     <span>Fast</span>
                     <span>Simple</span>
-                    <span>No fluff</span>
+                    <span>Disciplined</span>
                 </div>
             </div>
 
@@ -118,28 +133,97 @@
         </div>
     </section>
 
-    <section id="how" class="section">
-        <div class="section-inner">
-            <h2>How it works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <h3>Enter a few inputs</h3>
-                    <p>Account size, experience, risk style, and goal.</p>
+    <section id="how" class="how">
+        <div class="how-inner">
+            <div class="how-sticky">
+                <p class="pill">How it works</p>
+
+                <h2 class="how-title">
+                    A guided flow that stays with you.
+                </h2>
+
+                <div class="how-rail" role="tablist" aria-label="How it works steps">
+                    <button class="how-step is-active" data-step="0" type="button">
+                        <span class="how-num">01</span>
+                        <span class="how-label">Enter inputs</span>
+                    </button>
+
+                    <button class="how-step" data-step="1" type="button">
+                        <span class="how-num">02</span>
+                        <span class="how-label">Run checks</span>
+                    </button>
+
+                    <button class="how-step" data-step="2" type="button">
+                        <span class="how-num">03</span>
+                        <span class="how-label">Get guardrails</span>
+                    </button>
                 </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <h3>Run the check</h3>
-                    <p>PYR evaluates your setup against behavioral risk rules.</p>
+
+                <div class="how-progress">
+                    <div class="how-progress-bar" id="howProgress"></div>
                 </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <h3>Get clear guidance</h3>
-                    <p>Warnings, suggestions, and a summary you can act on fast.</p>
-                </div>
+            </div>
+
+            <div class="how-panels" id="howPanels">
+                <article class="how-panel is-active" data-step="0">
+                    <div class="how-panel-card">
+                        <div class="how-kicker">Step 1</div>
+                        <h3>Enter your context</h3>
+                        <p>
+                            Account size, experience, risk style, and goal. Keep it simple. PYR is built for fast honesty.
+                        </p>
+
+                        <div class="how-visual">
+                            <div class="mock">
+                                <div class="mock-row"><span>Account</span><span>$15,700</span></div>
+                                <div class="mock-row"><span>Experience</span><span>Intermediate</span></div>
+                                <div class="mock-row"><span>Risk</span><span>Balanced</span></div>
+                                <div class="mock-row"><span>Goal</span><span>Growth</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="how-panel" data-step="1">
+                    <div class="how-panel-card">
+                        <div class="how-kicker">Step 2</div>
+                        <h3>PYR runs checks instantly</h3>
+                        <p>
+                            It flags common blow-up patterns and highlights where your plan becomes fragile.
+                        </p>
+
+                        <div class="how-visual">
+                            <div class="mock">
+                                <div class="mock-row warn"><span>Warning</span><span>Oversizing risk</span></div>
+                                <div class="mock-row"><span>Suggestion</span><span>Cap exposure</span></div>
+                                <div class="mock-row"><span>Suggestion</span><span>Define stop</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="how-panel" data-step="2">
+                    <div class="how-panel-card">
+                        <div class="how-kicker">Step 3</div>
+                        <h3>Clear guardrails you can follow</h3>
+                        <p>
+                            A tight summary, warnings, and adjustments that keep you consistent without overthinking.
+                        </p>
+
+                        <div class="how-visual">
+                            <div class="mock">
+                                <div class="mock-row ok"><span>Status</span><span>Ready</span></div>
+                                <div class="mock-row"><span>Rule</span><span>Max position size</span></div>
+                                <div class="mock-row"><span>Rule</span><span>No revenge trades</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
+
+
 
     <section id="features" class="section alt">
         <div class="section-inner">

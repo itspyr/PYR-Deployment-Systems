@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PYR Challenge My Trade</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
+
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="landing.html">PYR</a>
+
+            <nav class="nav-links">
+                <a href="landing.html#how">How it works</a>
+                <a href="landing.html#features">Features</a>
+                <a href="community.html">Community</a>
+                <div class="nav-dd">
+                    <button class="nav-dd-btn">Tools</button>
+                    <div class="nav-dd-menu">
+                        <a href="app.html">Run a Check</a>
+                        <a href="challenge.html">Challenge My Trade</a>
+                    </div>
+                </div>
+                <a class="btn small" href="account.html">Account</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app">
+        <div class="app-inner">
+
+            <!-- LEFT: Tool + Form -->
+            <div class="panel">
+                <h1 class="app-title">Challenge My Trade</h1>
+                <p class="muted">A behavioral checklist that forces clarity before you click buy. No market predictions.</p>
+
+                <div class="form">
+                    <label>
+                        Ticker
+                        <input id="cTicker" type="text" placeholder="NVDA" maxlength="10" />
+                    </label>
+
+                    <label>
+                        Strategy
+                        <input id="cStrategy" type="text" placeholder="Breakout, pullback, CSP, swing, long, etc." maxlength="40" />
+                    </label>
+
+                    <label>
+                        Timeframe
+                        <select id="cTimeframe">
+                            <option value="intraday">Intraday</option>
+                            <option value="swing">Swing (days)</option>
+                            <option value="position">Position (weeks+)</option>
+                        </select>
+                    </label>
+
+                    <div class="jp-grid" style="margin-top:6px;">
+                        <div class="jp-row">
+                            <label>Entry</label>
+                            <input id="cEntry" type="number" step="0.01" placeholder="0.00" />
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Stop (invalidation)</label>
+                            <input id="cStop" type="number" step="0.01" placeholder="0.00" />
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Take profit</label>
+                            <input id="cTP" type="number" step="0.01" placeholder="0.00" />
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Position size (optional)</label>
+                            <input id="cSize" type="text" placeholder="100 shares / 1 contract" maxlength="30" />
+                        </div>
+                    </div>
+
+                    <label>
+                        Thesis (why this trade exists)
+                        <textarea id="cThesis" rows="4" placeholder="What is the setup? What’s the edge? Why now?"></textarea>
+                    </label>
+
+                    <label>
+                        What would prove you wrong
+                        <textarea id="cInvalidation" rows="3" placeholder="If X happens, I’m wrong. Not ‘I’ll feel wrong’, actual invalidation."></textarea>
+                    </label>
+
+                    <label>
+                        Current state (honest)
+                        <select id="cState">
+                            <option value="calm">Calm</option>
+                            <option value="bored">Bored</option>
+                            <option value="fomo">FOMO</option>
+                            <option value="revenge">Revenge / need it back</option>
+                            <option value="stressed">Stressed / distracted</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        What do you want from this trade
+                        <select id="cIntent">
+                            <option value="process">Follow process</option>
+                            <option value="money">Make money</option>
+                            <option value="relief">Relief (stop thinking about it)</option>
+                            <option value="prove">Prove I’m right</option>
+                        </select>
+                    </label>
+
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn" id="challengeBtn" type="button">Challenge</button>
+                        <button class="btn ghost" id="clearBtn" type="button">Clear</button>
+
+                        <span class="muted" id="challengeMsg"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Output -->
+            <div class="panel">
+                <h2 class="panel-title">Coach Output</h2>
+                <div id="challengeOut" class="results">
+                    <p class="muted">Fill the form and click Challenge. You’ll get questions, risk flags, and a “do nothing” warning if needed.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="challenge.js"></script>
+    <script src="global.js"></script>
+
+</div>
+</body>
+</html>

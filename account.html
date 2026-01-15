@@ -9,158 +9,176 @@
 <body>
 <div class="page">
 
-
-<header class="nav">
-    <div class="nav-inner">
-        <a class="brand" href="landing.html">PYR</a>
-        <nav class="nav-links">
-            <a href="landing.html#how">How it works</a>
-            <a href="landing.html#features">Features</a>
-            <a href="app.html">App</a>
-            <a href="community.html">Community</a>
-            <a class="btn small" href="account.html">Account</a>
-        </nav>
-    </div>
-</header>
-
-<main class="app">
-    <div class="app-inner">
-        <div class="panel">
-            <h1 class="app-title">Your Account</h1>
-            <p class="muted">Session-based MVP account view.</p>
-
-            <div id="accountInfo" class="results">
-                <p class="muted">Loading...</p>
-            </div>
-
-            <div style="margin-top:12px;">
-                <button class="btn ghost" id="logout">Log out</button>
-            </div>
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="landing.html">PYR</a>
+            <nav class="nav-links">
+                <a href="landing.html#how">How it works</a>
+                <a href="landing.html#features">Features</a>
+                <a href="community.html">Community</a>
+                <div class="nav-dd">
+                    <button class="nav-dd-btn">Tools</button>
+                    <div class="nav-dd-menu">
+                        <a href="app.html">Run a Check</a>
+                        <a href="challenge.html">Challenge My Trade</a>
+                    </div>
+                </div>
+                <a class="btn small" href="account.html">Account</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="panel">
-            <h2 class="panel-title">Saved Settings</h2>
-            <div id="saved" class="results">
-                <p class="muted">Nothing saved yet.</p>
+    <main class="app">
+        <div class="app-inner">
+            <div class="panel">
+                <h1 class="app-title">Your Account</h1>
+                <p class="muted">Session-based MVP account view.</p>
+
+                <!-- NEW: Behavioral Risk Score (always visible) -->
+                <div id="accountScore" class="score-card" style="margin-top:12px;">
+                    <div class="muted">Loading score...</div>
+                </div>
+
+                <div id="accountInfo" class="results" style="margin-top:12px;">
+                    <p class="muted">Loading...</p>
+                </div>
+
+                <div style="margin-top:12px;">
+                    <button class="btn ghost" id="logout">Log out</button>
+                </div>
             </div>
+
+            <div class="panel">
+                <h2 class="panel-title">Current Standing</h2>
+                <p class="muted" style="margin:0 0 10px;">
+                    Your saved plan and account settings.
+                </p>
+
+                <div id="saved" class="results">
+                    <p class="muted">Nothing saved yet.</p>
+                </div>
+            </div>
+
 
             <p class="muted" style="margin-top:12px;">
-                Current account status.
-            </p>
-        </div>
-        <section class="journal">
-            <div class="journal-head">
-                <h2>Trading Journal</h2>
-                <div class="journal-actions">
-                    <button class="btn small ghost" id="prevTradeBtn">Prev</button>
-                    <button class="btn small ghost" id="nextTradeBtn">Next</button>
-                    <button class="btn small" id="newTradeBtn">New Page</button>
-                </div>
-            </div>
-
-            <div class="journal-meta">
-                <div class="muted" id="journalStatus">Page 1 of 1</div>
-                <div class="muted" id="journalSavedNote"></div>
-            </div>
-
-            <div class="journal-page" id="journalPage">
-                <div class="jp-row">
-                    <label>Date</label>
-                    <input type="date" id="tDate">
-                </div>
-
-                <div class="jp-grid">
-                    <div class="jp-row">
-                        <label>Ticker</label>
-                        <input type="text" id="tTicker" placeholder="NVDA">
-                    </div>
-
-                    <div class="jp-row">
-                        <label>Strategy</label>
-                        <input type="text" id="tStrategy" placeholder="CSP, CC, Long, Swing, etc.">
-                    </div>
-
-                    <div class="jp-row">
-                        <label>Entry</label>
-                        <input type="number" step="0.01" id="tEntry" placeholder="0.00">
-                    </div>
-
-                    <div class="jp-row">
-                        <label>Exit</label>
-                        <input type="number" step="0.01" id="tExit" placeholder="0.00">
-                    </div>
-
-                    <div class="jp-row">
-                        <label>Size</label>
-                        <input type="text" id="tSize" placeholder="100 shares or 1 contract">
-                    </div>
-
-                    <div class="jp-row">
-                        <label>Result</label>
-                        <select id="tResult">
-                            <option value="">Select</option>
-                            <option value="Win">Win</option>
-                            <option value="Loss">Loss</option>
-                            <option value="Breakeven">Breakeven</option>
-                            <option value="Open">Open</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="jp-row">
-                    <label>Thesis</label>
-                    <textarea id="tThesis" rows="4" placeholder="Why did you take this trade?"></textarea>
-                </div>
-
-                <div class="jp-row">
-                    <label>Rules and Execution</label>
-                    <textarea id="tExecution" rows="4" placeholder="What rules did you follow or break?"></textarea>
-                </div>
-
-                <div class="jp-row">
-                    <label>Notes</label>
-                    <textarea id="tNotes" rows="6" placeholder="Anything you want to remember."></textarea>
-                </div>
-
-                <div class="jp-footer">
-                    <button class="btn" id="saveTradeBtn">Save Trade</button>
-                    <button class="btn ghost" id="deleteTradeBtn">Delete This Page</button>
-                </div>
-            </div>
-
-            <div class="journal-list">
-                <div class="journal-list-head">
-                    <h3>Saved Trades</h3>
-                    <input id="journalSearch" class="journal-search" type="text" placeholder="Search ticker or notes...">
-                </div>
-                <div id="journalListItems" class="journal-list-items"></div>
-            </div>
-        </section>
-
-    </div>
-    <div class="card" style="margin-top:14px;">
-        <div class="card-title">Profile</div>
-        <div class="card-body">
-            <div class="form">
-                <label>
-                    Username
-                    <input id="usernameInput" type="text" placeholder="tyler" maxlength="20">
-                </label>
-                <p class="muted" style="margin:8px 0 0; font-size:13px;">
-                    Letters, numbers, underscore. This shows in the Community.
+                    Current account status.
                 </p>
-                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
-                    <button class="btn" id="saveUsernameBtn">Save Username</button>
-                    <span class="muted" id="usernameStatus"></span>
+            </div>
+
+            <section class="journal">
+                <div class="journal-head">
+                    <h2>Trading Journal</h2>
+                    <div class="journal-actions">
+                        <button class="btn small ghost" id="prevTradeBtn">Prev</button>
+                        <button class="btn small ghost" id="nextTradeBtn">Next</button>
+                        <button class="btn small" id="newTradeBtn">New Page</button>
+                    </div>
+                </div>
+
+                <div class="journal-meta">
+                    <div class="muted" id="journalStatus">Page 1 of 1</div>
+                    <div class="muted" id="journalSavedNote"></div>
+                </div>
+
+                <div class="journal-page" id="journalPage">
+                    <div class="jp-row">
+                        <label>Date</label>
+                        <input type="date" id="tDate">
+                    </div>
+
+                    <div class="jp-grid">
+                        <div class="jp-row">
+                            <label>Ticker</label>
+                            <input type="text" id="tTicker" placeholder="NVDA">
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Strategy</label>
+                            <input type="text" id="tStrategy" placeholder="CSP, CC, Long, Swing, etc.">
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Entry</label>
+                            <input type="number" step="0.01" id="tEntry" placeholder="0.00">
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Exit</label>
+                            <input type="number" step="0.01" id="tExit" placeholder="0.00">
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Size</label>
+                            <input type="text" id="tSize" placeholder="100 shares or 1 contract">
+                        </div>
+
+                        <div class="jp-row">
+                            <label>Result</label>
+                            <select id="tResult">
+                                <option value="">Select</option>
+                                <option value="Win">Win</option>
+                                <option value="Loss">Loss</option>
+                                <option value="Breakeven">Breakeven</option>
+                                <option value="Open">Open</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="jp-row">
+                        <label>Thesis</label>
+                        <textarea id="tThesis" rows="4" placeholder="Why did you take this trade?"></textarea>
+                    </div>
+
+                    <div class="jp-row">
+                        <label>Rules and Execution</label>
+                        <textarea id="tExecution" rows="4" placeholder="What rules did you follow or break?"></textarea>
+                    </div>
+
+                    <div class="jp-row">
+                        <label>Notes</label>
+                        <textarea id="tNotes" rows="6" placeholder="Anything you want to remember."></textarea>
+                    </div>
+
+                    <div class="jp-footer">
+                        <button class="btn" id="saveTradeBtn">Save Trade</button>
+                        <button class="btn ghost" id="deleteTradeBtn">Delete This Page</button>
+                    </div>
+                </div>
+
+                <div class="journal-list">
+                    <div class="journal-list-head">
+                        <h3>Saved Trades</h3>
+                        <input id="journalSearch" class="journal-search" type="text" placeholder="Search ticker or notes...">
+                    </div>
+                    <div id="journalListItems" class="journal-list-items"></div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+            <div class="card-title">Profile</div>
+            <div class="card-body">
+                <div class="form">
+                    <label>
+                        Username
+                        <input id="usernameInput" type="text" placeholder="tyler" maxlength="20">
+                    </label>
+                    <p class="muted" style="margin:8px 0 0; font-size:13px;">
+                        Letters, numbers, underscore. This shows in the Community.
+                    </p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn" id="saveUsernameBtn">Save Username</button>
+                        <span class="muted" id="usernameStatus"></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</main>
+    </main>
 
-<script src="account.js"></script>
-<script src="script.js"></script>
+    <script src="account.js"></script>
+    <script src="script.js"></script>
     <script src="global.js"></script>
 
 </div>

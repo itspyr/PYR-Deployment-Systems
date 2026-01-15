@@ -17,9 +17,15 @@
             <nav class="nav-links">
                 <a href="landing.html#how">How it works</a>
                 <a href="landing.html#features">Features</a>
-                <a href="app.html">App</a>
-                <a href="account.html">Account</a>
-                <a class="btn small" href="community.html">Community</a>
+                <a href="community.html">Community</a>
+                <div class="nav-dd">
+                    <button class="nav-dd-btn">Tools</button>
+                    <div class="nav-dd-menu">
+                        <a href="app.html">Run a Check</a>
+                        <a href="challenge.html">Challenge My Trade</a>
+                    </div>
+                </div>
+                <a class="btn small" href="account.html">Account</a>
             </nav>
         </div>
     </header>
@@ -47,9 +53,9 @@
 
                     <div class="community-top">
                         <div>
-                            <h2 class="panel-title" style="margin:0;">Community Setups</h2>
+                            <h2 class="panel-title" style="margin:0;">Community Feed</h2>
                             <p class="muted" style="margin:8px 0 0;">
-                                Post your setup. Ask for critique. Keep it respectful. Not financial advice.
+                                For discussion and education only. Not financial advice.
                             </p>
                             <p class="muted" style="margin:10px 0 0;" id="memberBadge">Logged in</p>
                         </div>
@@ -133,33 +139,6 @@
 
 
 
-                <!-- Feed + Detail -->
-                <div class="community-grid" style="margin-top:14px;">
-                    <!-- Feed -->
-                    <div class="card">
-                        <div class="card-title">Posts</div>
-                        <div class="card-body">
-                            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                                <input id="postSearch" type="text" placeholder="Search title, ticker, text..." style="flex:1; min-width:220px;">
-                                <select id="sortPosts" style="width:220px; max-width:100%;">
-                                    <option value="new">Newest</option>
-                                    <option value="top">Top (score)</option>
-                                </select>
-                            </div>
-
-                            <div id="postList" class="community-feed"></div>
-                        </div>
-                    </div>
-
-                    <!-- Detail -->
-                    <div class="card">
-                        <div class="card-title">Post</div>
-                        <div class="card-body" id="postDetail">
-                            <div class="muted">Select a post from the left.</div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="muted" style="margin-top:12px; font-size:13px;">
                     Disclaimer: User-generated content. PYR does not verify accuracy and does not provide financial advice.
                 </div>
@@ -167,9 +146,14 @@
 
         </div>
     </main>
-
+<!-- Image Lightbox -->
+<div id="imgModal" class="img-modal" aria-hidden="true">
+    <div class="img-modal-backdrop"></div>
+    <img id="imgModalPic" alt="Expanded image">
+</div>
     <script src="global.js"></script>
     <script src="community.js"></script>
+
 </div>
 </body>
 </html>

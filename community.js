@@ -102,6 +102,32 @@
 
         return counts;
     }
+// ===== Image Lightbox =====
+    const imgModal = document.getElementById("imgModal");
+    const imgModalPic = document.getElementById("imgModalPic");
+
+    function openImg(src) {
+        if (!imgModal || !imgModalPic) return;
+        imgModalPic.src = src;
+        imgModal.classList.add("open");
+        imgModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeImg() {
+        if (!imgModal || !imgModalPic) return;
+        imgModal.classList.remove("open");
+        imgModal.setAttribute("aria-hidden", "true");
+        imgModalPic.src = "";
+        document.body.style.overflow = "";
+    }
+
+    if (imgModal) {
+        imgModal.addEventListener("click", closeImg); // click anywhere closes
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeImg();
+        });
+    }
 
     // Elements
     const titleEl = document.getElementById("pTitle");
@@ -174,7 +200,13 @@
             const thumb = document.createElement("div");
             thumb.className = "post-thumb";
             if (p.thumb) {
-                thumb.innerHTML = `<img src="${p.thumb}" alt="thumb">`;
+                thumb.innerHTML = `<img src="${p.thumb}" alt="thumb" style="cursor:zoom-in;">`;
+                thumb.style.cursor = "zoom-in";
+                thumb.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    openImg(p.thumb);
+                });
+
             } else {
                 thumb.textContent = "No image";
             }
@@ -242,16 +274,19 @@
         }
 
         const thumbHtml = p.thumb
-            ? `<div class="post-thumb" style="width:100%; height:220px; border-radius:16px; margin-bottom:12px;">
-           <img src="${p.thumb}" alt="thumb">
-         </div>`
+            ? `<div class="post-thumb" style="width:100%; height:220px; border-radius:16px; margin-bottom:12px; cursor: zoom-in;">
+       <img class="js-post-img" src="${p.thumb}" alt="thumb" style="cursor: zoom-in;">
+     </div>`
             : "";
+
 
         const isAuthor = p.authorEmail === email;
 
 
         detailEl.innerHTML = `
+
       ${thumbHtml}
+      
 
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
         <div>
@@ -293,6 +328,15 @@
         </div>
       </div>
     `;
+        // lightbox click (MUST be after innerHTML)
+        const img = detailEl.querySelector(".js-post-img");
+        if (img) {
+            img.addEventListener("click", (e) => {
+                e.stopPropagation();
+                openImg(img.src);
+            });
+        }
+
 
         // wire reactions
         document.getElementById("upBtn").onclick = () => react(p.id, "up");
@@ -305,6 +349,14 @@
         // comments
         renderComments(p.id);
         document.getElementById("addCommentBtn").onclick = () => addComment(p.id);
+    }
+// make detail image clickable to expand
+    const img = detailEl.querySelector(".js-post-img");
+    if (img) {
+        img.addEventListener("click", (e) => {
+            e.stopPropagation();
+            openImg(img.src);
+        });
     }
 
     function react(id, type) {
@@ -385,7 +437,8 @@
     function deletePost(id) {
         const p = posts.find(x => x.id === id);
         if (!p) return;
-        if (p.author !== email) return;
+        if (p.authorEmail !== email) return;
+
 
         posts = posts.filter(x => x.id !== id);
         savePosts(posts);
