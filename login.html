@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PYR Login</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <a class="brand" href="landing.html">PYR</a>
+        <nav class="nav-links">
+            <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="app.html">App</a>
+            <a class="btn small" href="account.html">Create Account</a>
+        </nav>
+    </div>
+</header>
+
+<main class="app">
+    <div class="app-inner">
+        <div class="panel">
+            <h1 class="app-title">Log in</h1>
+            <p class="muted">MVP login using localStorage.</p>
+
+            <div class="form">
+                <label>
+                    Email
+                    <input id="email" type="email" placeholder="you@email.com" autocomplete="email" />
+                </label>
+
+                <label>
+                    Password
+                    <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+                </label>
+
+                <button class="btn" id="login">Log in</button>
+
+                <p class="muted" style="margin-top:12px;">
+                    No account yet? <a href="account.html" style="text-decoration:underline;">Create one</a>
+                </p>
+
+                <p id="msg" class="muted" style="margin-top:12px;"></p>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 class="panel-title">Logged in state</h2>
+            <div id="state" class="results">
+                <p class="muted">Not logged in.</p>
+            </div>
+
+            <div style="margin-top:12px;">
+                <button class="btn ghost" id="logout">Log out</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="login.js"></script>
+</body>
+</html>

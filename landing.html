@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PYR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- STOCK TICKER -->
+<div style="position:sticky;top:0;z-index:10000;background:#0b0f14;">
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+                async
+        >
+            {
+                "symbols": [
+                {"proName": "NASDAQ:AAPL", "title": "AAPL"},
+                {"proName": "NASDAQ:NVDA", "title": "NVDA"},
+                {"proName": "NASDAQ:TSLA", "title": "TSLA"},
+                {"proName": "NASDAQ:QQQ",  "title": "QQQ"},
+                {"proName": "AMEX:SPY",    "title": "SPY"}
+            ],
+                "showSymbolLogo": true,
+                "isTransparent": true,
+                "displayMode": "adaptive",
+                "colorTheme": "dark",
+                "locale": "en"
+            }
+        </script>
+    </div>
+</div>
+<!-- END STOCK TICKER -->
+<header class="nav">
+    <div class="nav-inner">
+        <div class="brand">PYR</div>
+        <nav class="nav-links">
+            <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="account.html">Account</a>
+            <a class="btn small" href="app.html">Open App</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <p class="pill">Behavioral Capital Guidance</p>
+                <h1>Trade smarter by protecting your behavior, not just your picks.</h1>
+                <p class="sub">
+                    PYR helps you avoid the common blow-ups with simple inputs, clear warnings, and rules that keep you consistent.
+                </p>
+                <div class="cta">
+                    <a class="btn" href="app.html">Try the Check</a>
+                    <a class="btn ghost" href="#how">See how it works</a>
+                </div>
+                <div class="trust">
+                    <span>Fast</span>
+                    <span>Simple</span>
+                    <span>No fluff</span>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="card">
+                    <div class="card-title">Example Output</div>
+                    <div class="card-body">
+                        <div class="tag red">Warning</div>
+                        <p class="card-line"><strong>Over-sizing risk.</strong> Your planned risk is high for your experience level.</p>
+                        <div class="tag green">Suggestion</div>
+                        <p class="card-line">Cap position size at 2% and avoid adding to losers.</p>
+                        <div class="tag slate">Summary</div>
+                        <p class="card-line">Account: $15,700 • Experience: Intermediate • Risk: Balanced • Goal: Growth</p>
+                    </div>
+                </div>
+
+                <div class="mini-grid">
+                    <div class="mini">
+                        <div class="mini-top">Rule checks</div>
+                        <div class="mini-big">Instant</div>
+                    </div>
+                    <div class="mini">
+                        <div class="mini-top">Style</div>
+                        <div class="mini-big">Clean</div>
+                    </div>
+                    <div class="mini">
+                        <div class="mini-top">Focus</div>
+                        <div class="mini-big">Protect capital</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="section">
+        <div class="section-inner">
+            <h2>How it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Enter a few inputs</h3>
+                    <p>Account size, experience, risk style, and goal.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Run the check</h3>
+                    <p>PYR evaluates your setup against behavioral risk rules.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Get clear guidance</h3>
+                    <p>Warnings, suggestions, and a summary you can act on fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section alt">
+        <div class="section-inner">
+            <h2>What it catches</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Over-sizing</h3>
+                    <p>When position risk is too high for your account or experience.</p>
+                </div>
+                <div class="feature">
+                    <h3>Goal mismatch</h3>
+                    <p>When your settings conflict with what “weekly income” actually needs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Blow-up patterns</h3>
+                    <p>Common combos that cause spirals: aggression + low reps + chasing.</p>
+                </div>
+            </div>
+
+            <div class="bottom-cta">
+                <div>
+                    <h3>Ready to run your check?</h3>
+                    <p>Open the app and test it with your real numbers.</p>
+                </div>
+                <a class="btn" href="app.html">Open App</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="brand">PYR</div>
+            <div class="muted">Behavioral capital guidance • MVP build</div>
+        </div>
+    </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
