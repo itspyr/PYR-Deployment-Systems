@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PYR | Training</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="landing.html">PYR</a>
+            <nav class="nav-links">
+                <a href="landing.html#how">How it works</a>
+                <a href="landing.html#features">Features</a>
+                <a href="community.html">Community</a>
+                <div class="nav-dd">
+                    <button class="nav-dd-btn">Tools</button>
+                    <div class="nav-dd-menu">
+                        <a href="app.html">Run a Check</a>
+                        <a href="challenge.html">Challenge My Trade</a>
+                        <a href="quiz.html">Training</a>
+                    </div>
+                </div>
+                <a class="btn small" href="account.html">Account</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app">
+        <div class="app-inner" style="grid-template-columns: 1fr;">
+            <div class="panel">
+                <div class="drill-card">
+                    <!-- Header strip -->
+                    <div class="drill-head">
+                        <div>
+                            <div class="drill-kicker">
+                                <span class="tag green">Training</span>
+                                <span class="muted">Daily habit builder</span>
+                            </div>
+
+                            <h1 class="drill-title">Daily Drill</h1>
+                            <p class="drill-sub muted">
+                                Train risk discipline, execution, and decision making with real trading examples.
+                            </p>
+                        </div>
+
+                        <div class="drill-stats">
+                            <div class="drill-stat">
+                                <div class="muted">Points</div>
+                                <div class="drill-stat-big" id="pointsVal">0</div>
+                            </div>
+                            <div class="drill-stat">
+                                <div class="muted">Streak</div>
+                                <div class="drill-stat-big" id="streakVal">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="drill-body">
+
+                        <!-- INTRO / GATE -->
+                        <div id="trainingIntro">
+                            <div class="drill-rows">
+                                <div class="drill-row">
+                                    <div class="drill-row-left">Short daily drills that build real trading habits</div>
+                                    <div class="drill-pill">Reasoning</div>
+                                </div>
+                                <div class="drill-row">
+                                    <div class="drill-row-left">Quick by design, not overwhelming</div>
+                                    <div class="drill-pill">90 sec</div>
+                                </div>
+                                <div class="drill-row">
+                                    <div class="drill-row-left">Points and levels track consistency over time</div>
+                                    <div class="drill-pill">Progress</div>
+                                </div>
+                                <div class="drill-row">
+                                    <div class="drill-row-left">Streaks reward showing up, not perfection</div>
+                                    <div class="drill-pill">Discipline</div>
+                                </div>
+                            </div>
+
+                            <div class="drill-note">
+                                <strong>Not a test.</strong> This is pattern training so your default decisions improve under pressure.
+                            </div>
+
+                            <button class="btn drill-primary" id="startQuizBtn" type="button">Start Quiz</button>
+                        </div>
+
+                        <!-- QUIZ -->
+                        <div id="quizWrap" style="display:none;">
+                            <div id="quiz"></div>
+
+                            <div class="drill-actions">
+                                <button class="btn drill-primary" id="submitQuizBtn" type="button">Submit</button>
+                            </div>
+                        </div>
+
+                        <!-- LOCKED STATE -->
+                        <div id="quizLocked" style="display:none;">
+                            <div class="drill-locked">
+                                <div class="drill-locked-title">Completed for today</div>
+                                <div class="muted">Come back tomorrow. Consistency is the whole game.</div>
+                            </div>
+                        </div>
+
+                        <div class="muted" id="quizResult" style="margin-top:12px;"></div>
+                    </div>
+
+
+                    <script src="quiz_bank.js"></script>
+    <script src="quiz.js"></script>
+    <script src="global.js"></script>
+</div>
+</body>
+</html>
