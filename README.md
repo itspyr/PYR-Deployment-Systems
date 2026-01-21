@@ -30,9 +30,9 @@ This repository is maintained as a technical showcase.
 
 ## Tech Stack
 
-- HTML5  
-- CSS3  
-- JavaScript (ES6+)  
+- HTM
+- CSS
+- JavaScript
 - localStorage for persistence  
 - No frameworks or backend (intentional)
 
